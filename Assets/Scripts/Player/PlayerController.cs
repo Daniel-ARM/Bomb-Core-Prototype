@@ -22,11 +22,14 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        fireDelay = GameController.FireRate;
+        speed = GameController.MoveSpeed;
+
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
         rigidbody.velocity = new Vector2(h, v).normalized * speed;
 
-        collectedText.text = "Powder: " + collectedAmount;
+        collectedText.text = "Coins: " + collectedAmount;
 
         float shootHor = Input.GetAxisRaw("ShootHorizontal");
         float shootVert = Input.GetAxisRaw("ShootVertical");

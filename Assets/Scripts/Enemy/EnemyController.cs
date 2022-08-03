@@ -14,11 +14,19 @@ public enum EnemyState {
 
 };
 
+public enum EnemyType {
+    Melee,
+
+    Ranged
+}
+
 public class EnemyController : MonoBehaviour
 {
 
     GameObject player;
     public EnemyState currState = EnemyState.Stop;
+
+    public EnemyType enemyType;
 
     public float range;
 
@@ -31,6 +39,8 @@ public class EnemyController : MonoBehaviour
     private bool dead = false;
 
     private bool cooldownAttack = false;
+
+    public GameObject bulletPrefab;
     
 
     // Start is called before the first frame update
@@ -81,8 +91,19 @@ public class EnemyController : MonoBehaviour
 
     void Attack() {
         if (!cooldownAttack) {
-            GameController.DamagePlayer(1);
-            StartCoroutine(Cooldown());
+            switch (enemyType) {
+                case (EnemyType.Melee):
+                    GameController.DamagePlayer(1);
+                    StartCoroutine(Cooldown());
+                break;
+                case (EnemyType.Ranged):
+                    GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity) as GameObject;
+                    bullet.GetComponent<BulletController>().GetPlayer(player.transform);
+                    bullet.AddComponent<Rigidbody2D>().gravityScale = 0;
+                    bullet.GetComponent<BulletController>().isEnemyBullet = true;
+                    StartCoroutine(Cooldown());
+                break;
+            }
         }
     }
 
