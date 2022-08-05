@@ -1268,6 +1268,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7590553939624134121, guid: e8bf7a55ca6776a45847479842fcd962, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7590553939624134121, guid: e8bf7a55ca6776a45847479842fcd962, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7590553939624134122, guid: e8bf7a55ca6776a45847479842fcd962, type: 3}
+      propertyPath: m_Simulated
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7590553939624134123, guid: e8bf7a55ca6776a45847479842fcd962, type: 3}
       propertyPath: m_Name
       value: Player

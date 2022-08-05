@@ -8,9 +8,9 @@ public class GameController : MonoBehaviour
 
     public static GameController instance;
 
-    private static float health = 6;
+    private static float health = 3;
 
-    private static int maxHealth = 6;
+    private static float maxHealth = 3;
 
     private static float moveSpeed = 5f;
 
@@ -21,7 +21,7 @@ public class GameController : MonoBehaviour
 
     public static float Health { get => health; set => health = value; }
     
-    public static int MaxHealth { get => maxHealth; set => MaxHealth = value; }
+    public static float MaxHealth { get => maxHealth; set => MaxHealth = value; }
 
     public static float MoveSpeed { get => moveSpeed; set => moveSpeed = value; }
 
