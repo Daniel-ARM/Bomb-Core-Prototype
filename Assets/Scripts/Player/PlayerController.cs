@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
-    } 
+    }
 
     // Update is called once per frame
     void Update()
@@ -33,14 +33,16 @@ public class PlayerController : MonoBehaviour
 
         float shootHor = Input.GetAxisRaw("ShootHorizontal");
         float shootVert = Input.GetAxisRaw("ShootVertical");
-        if ((shootHor != 0 || shootVert != 0) && Time.time > lastFire + fireDelay) {
+        if ((shootHor != 0 || shootVert != 0) && Time.time > lastFire + fireDelay)
+        {
             Shoot(shootHor, shootVert);
             lastFire = Time.time;
         }
 
     }
 
-    void Shoot(float x, float y) {
+    void Shoot(float x, float y)
+    {
         GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation) as GameObject;
         bullet.AddComponent<Rigidbody2D>().gravityScale = 0;
         bullet.GetComponent<Rigidbody2D>().velocity = new Vector3(

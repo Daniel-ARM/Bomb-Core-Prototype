@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum EnemyState {
+public enum EnemyState
+{
 
     Stop,
 
@@ -14,7 +15,8 @@ public enum EnemyState {
 
 };
 
-public enum EnemyType {
+public enum EnemyType
+{
     Melee,
 
     Ranged
@@ -41,7 +43,7 @@ public class EnemyController : MonoBehaviour
     private bool cooldownAttack = false;
 
     public GameObject bulletPrefab;
-    
+
 
     // Start is called before the first frame update
     void Start()
@@ -52,68 +54,78 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        switch (currState) {
+        switch (currState)
+        {
             case (EnemyState.Stop):
                 StopAllCoroutines();
-            break;
+                break;
             case (EnemyState.Follow):
                 Follow();
-            break;
+                break;
             case (EnemyState.Die):
-                
-            break;
+
+                break;
             case (EnemyState.Attack):
                 Attack();
-            break;
+                break;
         }
 
-        if(IsPlayerInRange(range) && currState != EnemyState.Die) {
+        if (IsPlayerInRange(range) && currState != EnemyState.Die)
+        {
             currState = EnemyState.Follow;
-        }
-        else if(!IsPlayerInRange(range) && currState != EnemyState.Die) {
+        } else if (!IsPlayerInRange(range) && currState != EnemyState.Die)
+        {
             currState = EnemyState.Stop;
         }
 
-        if (Vector3.Distance(transform.position, player.transform.position) <= attackRange) {
+        if (Vector3.Distance(transform.position, player.transform.position) <= attackRange)
+        {
             currState = EnemyState.Attack;
         }
 
     }
 
-    private bool IsPlayerInRange(float range) {
+    private bool IsPlayerInRange(float range)
+    {
         return Vector3.Distance(transform.position, player.transform.position) <= range;
     }
 
 
-    void Follow() {
+    void Follow()
+    {
         transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
     }
 
-    void Attack() {
-        if (!cooldownAttack) {
-            switch (enemyType) {
+    void Attack()
+    {
+        if (!cooldownAttack)
+        {
+            switch (enemyType)
+            {
                 case (EnemyType.Melee):
                     GameController.DamagePlayer(1);
                     StartCoroutine(Cooldown());
-                break;
+                    break;
                 case (EnemyType.Ranged):
                     GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity) as GameObject;
                     bullet.GetComponent<BulletController>().GetPlayer(player.transform);
                     bullet.AddComponent<Rigidbody2D>().gravityScale = 0;
                     bullet.GetComponent<BulletController>().isEnemyBullet = true;
                     StartCoroutine(Cooldown());
-                break;
+                    break;
             }
         }
     }
 
-    private IEnumerator Cooldown() {
+    private IEnumerator Cooldown()
+    {
         cooldownAttack = true;
         yield return new WaitForSeconds(cooldown);
         cooldownAttack = false;
     }
 
-    public void Death() {
+    public void Death()
+    {
         Destroy(gameObject);
     }
 

@@ -19,43 +19,51 @@ public class BulletController : MonoBehaviour
     void Start()
     {
         StartCoroutine(DeathDelay());
-        if (!isEnemyBullet) {
+        if (!isEnemyBullet)
+        {
             transform.localScale = new Vector2(GameController.BulletSize, GameController.BulletSize);
         }
-        
+
     }
 
-    void Update() {
-        if (isEnemyBullet) {
+    void Update()
+    {
+        if (isEnemyBullet)
+        {
             curPos = transform.position;
             transform.position = Vector2.MoveTowards(transform.position, playerPos, 5f * Time.deltaTime);
-            if(curPos == lastPos) {
+            if (curPos == lastPos)
+            {
                 Destroy(gameObject);
             }
             lastPos = curPos;
         }
     }
 
-    public void GetPlayer(Transform player) {
+    public void GetPlayer(Transform player)
+    {
         playerPos = player.position;
     }
 
-    IEnumerator DeathDelay() 
+    IEnumerator DeathDelay()
     {
         yield return new WaitForSeconds(lifeTime);
         Destroy(gameObject);
     }
 
-    void OnTriggerEnter2D(Collider2D col) {
+    void OnTriggerEnter2D(Collider2D col)
+    {
 
-        if (col.tag == "Player" && isEnemyBullet) {
+        if (col.tag == "Player" && isEnemyBullet)
+        {
             GameController.DamagePlayer(1);
             Destroy(gameObject);
         }
 
-        if (col.tag == "Enemy" && !isEnemyBullet) {
+        if (col.tag == "Enemy" && !isEnemyBullet)
+        {
             col.gameObject.GetComponent<EnemyController>().Death();
             Destroy(gameObject);
-        }      
+        }
     }
 }

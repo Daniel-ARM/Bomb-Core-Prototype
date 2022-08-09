@@ -20,7 +20,7 @@ public class GameController : MonoBehaviour
 
 
     public static float Health { get => health; set => health = value; }
-    
+
     public static float MaxHealth { get => maxHealth; set => MaxHealth = value; }
 
     public static float MoveSpeed { get => moveSpeed; set => moveSpeed = value; }
@@ -33,7 +33,8 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
-        if(instance == null) {
+        if (instance == null)
+        {
             instance = this;
         }
     }
@@ -41,34 +42,41 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    public static void DamagePlayer(int damage) {
+    public static void DamagePlayer(int damage)
+    {
         health -= damage;
 
-        if(health <= 0) {
+        if (health <= 0)
+        {
             KillPlayer();
         }
     }
 
-    public static void HealPlayer(float healAmount) {
+    public static void HealPlayer(float healAmount)
+    {
         health = Mathf.Min(maxHealth, health + healAmount);
     }
 
-    public static void MoveSpeedChange(float speed) {
+    public static void MoveSpeedChange(float speed)
+    {
         moveSpeed += speed;
     }
 
-    public static void FireRateChange(float rate) {
+    public static void FireRateChange(float rate)
+    {
         fireRate -= rate;
     }
 
-    public static void BulletSizeChange(float size) {
+    public static void BulletSizeChange(float size)
+    {
         bulletSize += size;
     }
 
-    private static void KillPlayer() {
+    private static void KillPlayer()
+    {
 
     }
 

@@ -5,7 +5,8 @@ using UnityEngine;
 
 [System.Serializable]
 
-public class Item {
+public class Item
+{
 
     public string name;
 
@@ -37,8 +38,10 @@ public class CollectionController : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.tag == "Player") {
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Player")
+        {
 
             //PlayerController.collectedAmount++;
             GameController.HealPlayer(healthChange);

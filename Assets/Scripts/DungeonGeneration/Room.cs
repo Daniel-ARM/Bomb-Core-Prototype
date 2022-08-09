@@ -10,10 +10,17 @@ public class Room : MonoBehaviour
     public int X;
     public int Y;
 
+    public Room(int x, int y)
+    {
+        X = x;
+        Y = y;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        if(RoomController.instance == null) {
+        if (RoomController.instance == null)
+        {
             Debug.Log("You pressed play in the wrong scene!");
             return;
         }
@@ -22,13 +29,23 @@ public class Room : MonoBehaviour
 
     }
 
-    void OnDrawGizmos() {
+    void OnDrawGizmos()
+    {
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(transform.position, new Vector3(Width, Height, 0));
     }
 
-    public Vector3 GetRoomCenter() {
+    public Vector3 GetRoomCenter()
+    {
         return new Vector3(X * Width, Y * Height);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.tag == "Player")
+        {
+            RoomController.instance.OnPlayerEnterRoom(this);
+        }
     }
 
 }
