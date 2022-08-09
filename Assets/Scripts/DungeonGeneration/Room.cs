@@ -47,5 +47,4 @@ public class Room : MonoBehaviour
             RoomController.instance.OnPlayerEnterRoom(this);
         }
     }
-
 }

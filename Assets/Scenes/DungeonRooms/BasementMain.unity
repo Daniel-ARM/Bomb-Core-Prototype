@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currRoom: {fileID: 0}
-  moveSpeedWhenRoomChange: 300
+  moveSpeedWhenRoomChange: 50
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -777,7 +777,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7997613712320579632, guid: 2582492cc4abdda4899ce39b4b6dd1c7, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7997613712320579633, guid: 2582492cc4abdda4899ce39b4b6dd1c7, type: 3}
       propertyPath: m_Color.b
@@ -813,7 +813,7 @@ PrefabInstance:
       objectReference: {fileID: 3699994978830148821, guid: 68b363e4496a79847b9103de7359f15b, type: 3}
     - target: {fileID: 7997613712320579646, guid: 2582492cc4abdda4899ce39b4b6dd1c7, type: 3}
       propertyPath: m_IsTrigger
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7997613712320579647, guid: 2582492cc4abdda4899ce39b4b6dd1c7, type: 3}
       propertyPath: m_RootOrder
@@ -951,7 +951,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7997613712320579632, guid: 2582492cc4abdda4899ce39b4b6dd1c7, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7997613712320579633, guid: 2582492cc4abdda4899ce39b4b6dd1c7, type: 3}
       propertyPath: m_Color.b
@@ -987,7 +987,7 @@ PrefabInstance:
       objectReference: {fileID: 3699994978830148821, guid: 68b363e4496a79847b9103de7359f15b, type: 3}
     - target: {fileID: 7997613712320579646, guid: 2582492cc4abdda4899ce39b4b6dd1c7, type: 3}
       propertyPath: m_IsTrigger
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7997613712320579647, guid: 2582492cc4abdda4899ce39b4b6dd1c7, type: 3}
       propertyPath: m_RootOrder
