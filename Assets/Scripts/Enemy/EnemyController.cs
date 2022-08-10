@@ -42,6 +42,8 @@ public class EnemyController : MonoBehaviour
 
     private bool cooldownAttack = false;
 
+    public bool notInRoom = false;
+
     public GameObject bulletPrefab;
 
 
@@ -70,18 +72,26 @@ public class EnemyController : MonoBehaviour
                 break;
         }
 
-        if (IsPlayerInRange(range) && currState != EnemyState.Die)
+        if (!notInRoom)
         {
-            currState = EnemyState.Follow;
-        } else if (!IsPlayerInRange(range) && currState != EnemyState.Die)
+            if (IsPlayerInRange(range) && currState != EnemyState.Die)
+            {
+                currState = EnemyState.Follow;
+            } else if (!IsPlayerInRange(range) && currState != EnemyState.Die)
+            {
+                currState = EnemyState.Stop;
+            }
+
+            if (Vector3.Distance(transform.position, player.transform.position) <= attackRange)
+            {
+                currState = EnemyState.Attack;
+            }
+        } else
         {
             currState = EnemyState.Stop;
         }
 
-        if (Vector3.Distance(transform.position, player.transform.position) <= attackRange)
-        {
-            currState = EnemyState.Attack;
-        }
+
 
     }
 

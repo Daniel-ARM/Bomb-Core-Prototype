@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: MeleeEnemy 1
   m_EditorClassIdentifier: 
   itemToSpawn: {fileID: 5868939016621049924, guid: 94fa2bf85b113374a9a080fb361ba190, type: 3}
-  minSpawn: 2
-  maxSpawn: 4
+  minSpawn: 1
+  maxSpawn: 3
