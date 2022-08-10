@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Linq;
 
 public class RoomInfo
 {
@@ -25,6 +26,10 @@ public class RoomController : MonoBehaviour
     public List<Room> loadedRooms = new List<Room>();
 
     bool isLoadingRoom = false;
+
+    bool spawnedBossRoom = false;
+
+    bool updatedRooms = false;
 
     void Awake()
     {
@@ -54,6 +59,17 @@ public class RoomController : MonoBehaviour
 
         if (loadRoomQueue.Count == 0)
         {
+            if (!spawnedBossRoom)
+            {
+                StartCoroutine(SpawnBossRoom());
+            } else if(spawnedBossRoom && !updatedRooms)
+            {
+                foreach(Room room in loadedRooms)
+                {
+                    room.RemoveUnconnectedDoors();
+                }
+                updatedRooms = true;
+            }
             return;
         }
 
@@ -61,6 +77,21 @@ public class RoomController : MonoBehaviour
         isLoadingRoom = true;
 
         StartCoroutine(LoadRoomRoutine(currentLoadRoomData));
+    }
+
+    IEnumerator SpawnBossRoom()
+    {
+        spawnedBossRoom = true;
+        yield return new WaitForSeconds(0.5f);
+        if(loadRoomQueue.Count == 0)
+        {
+            Room bossRoom = loadedRooms[loadedRooms.Count - 1];
+            Room tempRoom = new Room(bossRoom.X, bossRoom.Y);
+            Destroy(bossRoom.gameObject);
+            var roomToRemove = loadedRooms.Single(r => r.X == tempRoom.X && r.Y == tempRoom.Y);
+            loadedRooms.Remove(roomToRemove);
+            LoadRoom("End", tempRoom.X, tempRoom.Y);
+        }
     }
 
     public void LoadRoom(string name, int x, int y)
@@ -112,7 +143,6 @@ public class RoomController : MonoBehaviour
             }
 
             loadedRooms.Add(room);
-            room.RemoveUnconnectedDoors();
 
         } else
         {
