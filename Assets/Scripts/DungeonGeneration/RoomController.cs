@@ -97,7 +97,7 @@ public class RoomController : MonoBehaviour
             currentLoadRoomData.Y * room.Height,
             0
 
-        );
+            );
 
             room.X = currentLoadRoomData.X;
             room.Y = currentLoadRoomData.Y;
@@ -112,6 +112,7 @@ public class RoomController : MonoBehaviour
             }
 
             loadedRooms.Add(room);
+            room.RemoveUnconnectedDoors();
 
         } else
         {
@@ -123,6 +124,11 @@ public class RoomController : MonoBehaviour
     public bool DoesRoomExist(int x, int y)
     {
         return loadedRooms.Find(item => item.X == x && item.Y == y) != null;
+    }
+
+    public Room FindRoom(int x, int y)
+    {
+        return loadedRooms.Find(item => item.X == x && item.Y == y);
     }
 
     public void OnPlayerEnterRoom(Room room)
