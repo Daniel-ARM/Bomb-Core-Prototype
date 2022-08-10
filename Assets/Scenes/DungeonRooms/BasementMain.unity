@@ -332,6 +332,7 @@ GameObject:
   m_Component:
   - component: {fileID: 862972040}
   - component: {fileID: 862972039}
+  - component: {fileID: 862972041}
   m_Layer: 0
   m_Name: RoomController
   m_TagString: Untagged
@@ -366,6 +367,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &862972041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 862972038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 904f743e10b98e34abc48dfad299def5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dungeonGenerationData: {fileID: 11400000, guid: c4b6e74c781a6a24ea1f209032bd3a54, type: 2}
 --- !u!1 &1126907267
 GameObject:
   m_ObjectHideFlags: 0
@@ -777,7 +791,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7997613712320579632, guid: 2582492cc4abdda4899ce39b4b6dd1c7, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7997613712320579633, guid: 2582492cc4abdda4899ce39b4b6dd1c7, type: 3}
       propertyPath: m_Color.b
@@ -951,7 +965,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7997613712320579632, guid: 2582492cc4abdda4899ce39b4b6dd1c7, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7997613712320579633, guid: 2582492cc4abdda4899ce39b4b6dd1c7, type: 3}
       propertyPath: m_Color.b
