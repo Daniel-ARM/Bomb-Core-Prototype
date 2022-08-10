@@ -581,6 +581,57 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1164304743
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1164304744}
+  - component: {fileID: 1164304745}
+  m_Layer: 0
+  m_Name: Grid
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1164304744
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1164304743}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1519342963}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1164304745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1164304743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33a5b429a10d8754b86b719056b0405c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  room: {fileID: 0}
+  grid:
+    columns: 0
+    rows: 0
+    verticalOffset: 4.5
+    horizontalOffset: 9
+  gridTile: {fileID: 6529622347819408010, guid: d1b76e5025ef2014fa714145eb62947c, type: 3}
+  availablePoints: []
 --- !u!1 &1508977470
 GameObject:
   m_ObjectHideFlags: 0
@@ -688,6 +739,7 @@ GameObject:
   - component: {fileID: 1519342963}
   - component: {fileID: 1519342964}
   - component: {fileID: 1519342965}
+  - component: {fileID: 1519342966}
   m_Layer: 0
   m_Name: Room
   m_TagString: Untagged
@@ -708,6 +760,7 @@ Transform:
   m_Children:
   - {fileID: 1590155413}
   - {fileID: 414068131}
+  - {fileID: 1164304744}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -727,6 +780,11 @@ MonoBehaviour:
   Height: 10
   X: 0
   Y: 0
+  leftDoor: {fileID: 0}
+  rightDoor: {fileID: 0}
+  topDoor: {fileID: 0}
+  bottomDoor: {fileID: 0}
+  doors: []
 --- !u!61 &1519342965
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -753,6 +811,26 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 18, y: 9.2}
   m_EdgeRadius: 0
+--- !u!114 &1519342966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1519342962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 412513b8e3150df4f9bf7dfcb6748bc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grid: {fileID: 1164304745}
+  spawnerData:
+  - name: MeleeEnemy
+    spawnerData: {fileID: 11400000, guid: f87e9004577e9c54db70d51445597c98, type: 2}
+  - name: RangedEnemy
+    spawnerData: {fileID: 11400000, guid: deab39c87da9bd94697a487591a049f4, type: 2}
+  - name: RandomItemSpawner
+    spawnerData: {fileID: 11400000, guid: 9fc2cb6287d6380459de6d5bd248a58f, type: 2}
 --- !u!1 &1590155412
 GameObject:
   m_ObjectHideFlags: 0
